@@ -9,4 +9,10 @@ public class PortMap {
         public static final int SHOOTER_RIGHT_MOTOR_ID = 2;
         public static final int SHOOTER_SENSORE_ID = 1;
     }
+
+    // intake
+    public class Intake {
+        public static final int INTAKE_MOTOR_ID = 3;
+        public static final int INTAKE_SENSORE_ID = 2;
+    }
 }

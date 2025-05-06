@@ -10,14 +10,12 @@ import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import com.ma5951.utils.Utils.ConvUtil;
 
-import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.units.measure.Current;
 import edu.wpi.first.units.measure.Voltage;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.PortMap;
-import frc.robot.Subsystem.Shooter.ShooterConstanse;
+import frc.robot.Subsystem.Shooter.ShooterConstants;
 
 public class ShooterIOReal implements ShooterIO {
 
@@ -65,15 +63,15 @@ public class ShooterIOReal implements ShooterIO {
   }
 
   public void motorLConfig() {
-    leftMotorConfig.Feedback.SensorToMechanismRatio = ShooterConstanse.GEAR;
+    leftMotorConfig.Feedback.SensorToMechanismRatio = ShooterConstants.GEAR;
 
     leftMotorConfig.Voltage.PeakForwardVoltage = 12;
     leftMotorConfig.Voltage.PeakReverseVoltage = -12;
 
-    leftMotorConfig.CurrentLimits.StatorCurrentLimitEnable = ShooterConstanse.IS_CURRENT_LIMIT_ENABLED;
-    leftMotorConfig.CurrentLimits.StatorCurrentLimit = ShooterConstanse.PEAK_CURRENT_LIMIT;
-    leftMotorConfig.CurrentLimits.SupplyCurrentLowerLimit  = ShooterConstanse.CONTINUES_CURRENT_LIMIT;
-    leftMotorConfig.CurrentLimits.SupplyCurrentLowerTime  = ShooterConstanse.PEAK_CURRENT_TIME;
+    leftMotorConfig.CurrentLimits.StatorCurrentLimitEnable = ShooterConstants.IS_CURRENT_LIMIT_ENABLED;
+    leftMotorConfig.CurrentLimits.StatorCurrentLimit = ShooterConstants.PEAK_CURRENT_LIMIT;
+    leftMotorConfig.CurrentLimits.SupplyCurrentLowerLimit  = ShooterConstants.CONTINUES_CURRENT_LIMIT;
+    leftMotorConfig.CurrentLimits.SupplyCurrentLowerTime  = ShooterConstants.PEAK_CURRENT_TIME;
 
     leftMotorConfig.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
     leftMotorConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
@@ -81,23 +79,23 @@ public class ShooterIOReal implements ShooterIO {
     leftMotorConfig.HardwareLimitSwitch.ForwardLimitEnable = false;
     leftMotorConfig.HardwareLimitSwitch.ReverseLimitEnable = false;
 
-    leftMotorConfig.Slot0.kP = ShooterConstanse.LEFT_kP;
-    leftMotorConfig.Slot0.kI = ShooterConstanse.LEFT_kI;
-    leftMotorConfig.Slot0.kD = ShooterConstanse.LEFT_kD;
+    leftMotorConfig.Slot0.kP = ShooterConstants.LEFT_kP;
+    leftMotorConfig.Slot0.kI = ShooterConstants.LEFT_kI;
+    leftMotorConfig.Slot0.kD = ShooterConstants.LEFT_kD;
 
     leftMotor.getConfigurator().apply(leftMotorConfig);
   }
 
   public void motorRConfig() {
-    rightMotorConfig.Feedback.SensorToMechanismRatio = ShooterConstanse.GEAR;
+    rightMotorConfig.Feedback.SensorToMechanismRatio = ShooterConstants.GEAR;
 
     rightMotorConfig.Voltage.PeakForwardVoltage = 12;
     rightMotorConfig.Voltage.PeakReverseVoltage = -12;
 
-    rightMotorConfig.CurrentLimits.StatorCurrentLimitEnable = ShooterConstanse.IS_CURRENT_LIMIT_ENABLED;
-    rightMotorConfig.CurrentLimits.StatorCurrentLimit = ShooterConstanse.PEAK_CURRENT_LIMIT;
-    rightMotorConfig.CurrentLimits.SupplyCurrentLowerLimit  = ShooterConstanse.CONTINUES_CURRENT_LIMIT;
-    rightMotorConfig.CurrentLimits.SupplyCurrentLowerTime  = ShooterConstanse.PEAK_CURRENT_TIME;
+    rightMotorConfig.CurrentLimits.StatorCurrentLimitEnable = ShooterConstants.IS_CURRENT_LIMIT_ENABLED;
+    rightMotorConfig.CurrentLimits.StatorCurrentLimit = ShooterConstants.PEAK_CURRENT_LIMIT;
+    rightMotorConfig.CurrentLimits.SupplyCurrentLowerLimit  = ShooterConstants.CONTINUES_CURRENT_LIMIT;
+    rightMotorConfig.CurrentLimits.SupplyCurrentLowerTime  = ShooterConstants.PEAK_CURRENT_TIME;
 
     rightMotorConfig.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
     rightMotorConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
@@ -105,9 +103,9 @@ public class ShooterIOReal implements ShooterIO {
     rightMotorConfig.HardwareLimitSwitch.ForwardLimitEnable = false;
     rightMotorConfig.HardwareLimitSwitch.ReverseLimitEnable = false;
 
-    rightMotorConfig.Slot0.kP = ShooterConstanse.RIGHT_kP;
-    rightMotorConfig.Slot0.kI = ShooterConstanse.RIGHT_kI;
-    rightMotorConfig.Slot0.kD = ShooterConstanse.RIGHT_kD;
+    rightMotorConfig.Slot0.kP = ShooterConstants.RIGHT_kP;
+    rightMotorConfig.Slot0.kI = ShooterConstants.RIGHT_kI;
+    rightMotorConfig.Slot0.kD = ShooterConstants.RIGHT_kD;
 
     rightMotor.getConfigurator().apply(rightMotorConfig);
     
@@ -156,12 +154,12 @@ public class ShooterIOReal implements ShooterIO {
   }
 
   public void setLeftVelocity(double velocity, double feedforward) {
-    leftMotor.setControl(leftPID.withVelocity(ConvUtil.RPMtoRPS(velocity)).withSlot(ShooterConstanse.CONTROL_SLOT)
+    leftMotor.setControl(leftPID.withVelocity(ConvUtil.RPMtoRPS(velocity)).withSlot(ShooterConstants.CONTROL_SLOT)
     .withFeedForward(feedforward));
   }
 
   public void setRightVelocity(double velocity, double feedforward) {
-    rightMotor.setControl(rightPID.withVelocity(ConvUtil.RPMtoRPS(velocity)).withSlot(ShooterConstanse.CONTROL_SLOT)
+    rightMotor.setControl(rightPID.withVelocity(ConvUtil.RPMtoRPS(velocity)).withSlot(ShooterConstants.CONTROL_SLOT)
     .withFeedForward(feedforward));
   }
 

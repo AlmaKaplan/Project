@@ -8,10 +8,10 @@ import frc.robot.Subsystem.Shooter.IOs.ShooterIO;
 public class Shooter extends StateControlledSubsystem {
 
   public static Shooter shooter;
-  public static ShooterIO io = ShooterConstanse.getShooterIO();
+  public static ShooterIO io = ShooterConstants.getShooterIO();
 
   private Shooter() {
-    super(ShooterConstanse.SUBSYSTEM_STATES, "shooter");
+    super(ShooterConstants.SUBSYSTEM_STATES, "shooter");
   }
 
   public boolean isGamePiece() {
