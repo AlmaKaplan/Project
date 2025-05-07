@@ -24,7 +24,7 @@ public class ShooterIOReal implements ShooterIO {
   protected TalonFXConfiguration leftMotorConfig;
   protected TalonFXConfiguration rightMotorConfig;
 
-  protected DigitalInput gamePieceSensor;
+  private DigitalInput gamePieceSensor;
 
   private VelocityVoltage leftPID;
   private VelocityVoltage rightPID;
@@ -60,6 +60,9 @@ public class ShooterIOReal implements ShooterIO {
 
     leftPID = new VelocityVoltage(0);
     rightPID = new VelocityVoltage(0);
+
+    motorLConfig();
+    motorRConfig();
   }
 
   public void motorLConfig() {
@@ -116,9 +119,21 @@ public class ShooterIOReal implements ShooterIO {
   }
 
   public void setNutralModeLeft(boolean isBrake) {
+    if (isBrake) {
+      leftMotor.setNeutralMode(NeutralModeValue.Brake);
+    } else {
+      leftMotor.setNeutralMode(NeutralModeValue.Coast);
+    }
+    leftMotor.getConfigurator().apply(leftMotorConfig);
   }
     
   public void setNutralModeRight(boolean isBrake) {
+    if (isBrake) {
+      rightMotor.setNeutralMode(NeutralModeValue.Brake);
+    } else {
+      rightMotor.setNeutralMode(NeutralModeValue.Coast);
+    }
+    rightMotor.getConfigurator().apply(rightMotorConfig);
   }
 
   public void setLeftVoltage(double volt) {

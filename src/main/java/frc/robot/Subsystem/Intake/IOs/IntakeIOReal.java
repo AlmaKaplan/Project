@@ -34,9 +34,12 @@ public class IntakeIOReal implements IntakeIO {
         motorCurrent = intakeMotor.getSupplyCurrent();
         motorVelocity = intakeMotor.getVelocity();
         motorApliedVolts = intakeMotor.getMotorVoltage();
+
+        motorConfig();
+
     }
 
-    public void motorLConfig() {
+    public void motorConfig() {
         MotorConfig.Feedback.SensorToMechanismRatio = IntakeConstants.GEAR;
 
         MotorConfig.Voltage.PeakForwardVoltage = 12;
@@ -82,6 +85,7 @@ public class IntakeIOReal implements IntakeIO {
         } else {
             intakeMotor.setNeutralMode(NeutralModeValue.Coast);
         }
+        intakeMotor.getConfigurator().apply(MotorConfig);
     }
 
     public void updateIntakePeriodic() {

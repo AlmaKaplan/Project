@@ -15,4 +15,10 @@ public class PortMap {
         public static final int INTAKE_MOTOR_ID = 3;
         public static final int INTAKE_SENSORE_ID = 2;
     }
+
+    // feeder
+    public class Feeder {
+        public static final int FEEDER_MOTOR_ID = 4;
+        public static final int FEEDER_SENSORE_ID = 3;
+    }
 }
