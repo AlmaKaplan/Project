@@ -16,16 +16,6 @@ public class IntakeConstants {
     public static final double PEAK_CURRENT_TIME = 0.1; 
     public static final boolean IS_CURRENT_LIMIT_ENABLED = true;
 
-    public static final int CONTROL_SLOT = 0;
-
-    public static final double LEFT_kP = 1;
-    public static final double LEFT_kI = 0;
-    public static final double LEFT_kD = 0;
-
-    public static final double RIGHT_kP = 1;
-    public static final double RIGHT_kI = 0;
-    public static final double RIGHT_kD = 0;
-
     public static final State IDLE = StatesConstants.IDLE;  
     public static final State INTAKE = new State("INTAKE");
     public static final State SORTING = new State("SORTING");
