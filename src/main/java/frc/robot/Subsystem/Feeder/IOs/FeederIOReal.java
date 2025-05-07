@@ -13,7 +13,6 @@ import edu.wpi.first.units.measure.Current;
 import edu.wpi.first.units.measure.Voltage;
 import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.PortMap;
-import frc.robot.PortMap.Feeder;
 import frc.robot.Subsystem.Feeder.FeederConstants;
 
 public class FeederIOReal implements FeederIO{

@@ -14,7 +14,6 @@ import edu.wpi.first.units.measure.Voltage;
 import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.PortMap;
 import frc.robot.Subsystem.Intake.IntakeConstants;
-import frc.robot.Subsystem.Shooter.ShooterConstants;
 
 public class IntakeIOReal implements IntakeIO {
 

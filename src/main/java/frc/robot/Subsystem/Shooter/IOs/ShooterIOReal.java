@@ -47,8 +47,6 @@ public class ShooterIOReal implements ShooterIO {
     leftMotorConfig = new TalonFXConfiguration();
     rightMotorConfig = new TalonFXConfiguration();
 
-    motorLConfig();
-    motorRConfig();
 
     leftCurrent = leftMotor.getSupplyCurrent();
     leftVelocity = leftMotor.getVelocity();
