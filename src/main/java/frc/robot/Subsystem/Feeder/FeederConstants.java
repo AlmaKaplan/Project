@@ -9,7 +9,6 @@ import frc.robot.Subsystem.Feeder.IOs.FeederIOSim;
 import com.ma5951.utils.StateControl.StatesTypes.State;
 import com.ma5951.utils.StateControl.StatesTypes.StatesConstants;
 
-import frc.robot.PortMap.Feeder;
 
 public class FeederConstants {
     public static final double GEAR = 1;

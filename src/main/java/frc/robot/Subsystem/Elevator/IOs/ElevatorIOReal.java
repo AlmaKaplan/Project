@@ -50,7 +50,7 @@ public class ElevatorIOReal implements ElevatorIO {
         elevatorMotorConfig.CurrentLimits.SupplyCurrentLowerTime  = ElevatorConstants.PEAK_CURRENT_TIME;
 
         elevatorMotorConfig.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
-        elevatorMotorConfig.MotorOutput.NeutralMode = com.ctre.phoenix6.signals.NeutralModeValue.Brake;
+        elevatorMotorConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
 
         elevatorMotorConfig.Slot0.kP = ElevatorConstants.LEFT_kP;
         elevatorMotorConfig.Slot0.kI = ElevatorConstants.LEFT_kI;
@@ -84,9 +84,9 @@ public class ElevatorIOReal implements ElevatorIO {
 
     public void setElevatorMotorNutralMode(boolean isBrake) {
         if (isBrake) {
-            elevatorMotor.setNeutralMode(NeutralModeValue.Brake);
+            elevatorMotorConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
         } else {
-            elevatorMotor.setNeutralMode(NeutralModeValue.Coast);
+            elevatorMotorConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
         }
         elevatorMotor.getConfigurator().apply(elevatorMotorConfig);
     }

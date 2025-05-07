@@ -50,7 +50,7 @@ public class IntakeIOReal implements IntakeIO {
         MotorConfig.CurrentLimits.SupplyCurrentLowerTime  = IntakeConstants.PEAK_CURRENT_TIME;
 
         MotorConfig.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
-        MotorConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
+        MotorConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
 
         MotorConfig.HardwareLimitSwitch.ForwardLimitEnable = false;
         MotorConfig.HardwareLimitSwitch.ReverseLimitEnable = false;
@@ -80,9 +80,9 @@ public class IntakeIOReal implements IntakeIO {
 
     public void setIntakeMotorNutralMode(boolean isBrake) {
         if (isBrake) {
-            intakeMotor.setNeutralMode(NeutralModeValue.Brake);
+            MotorConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
         } else {
-            intakeMotor.setNeutralMode(NeutralModeValue.Coast);
+            MotorConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
         }
         intakeMotor.getConfigurator().apply(MotorConfig);
     }

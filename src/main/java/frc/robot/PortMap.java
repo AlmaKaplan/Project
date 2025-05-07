@@ -29,10 +29,10 @@ public class PortMap {
 
     // driveTrine
     public class DriveTrain {
-        public static final int LEFT_MOTOR_1_ID = 6;
-        public static final int LEFT_MOTOR_2_ID = 7;
-        public static final int RIGHT_MOTOR_1_ID = 8;
-        public static final int RIGHT_MOTOR_2_ID = 9;
+        public static final int LEFT_MASTER_MOTOR_ID = 6;
+        public static final int LEFT_SLAVE_MOTOR_ID = 7;
+        public static final int RIGHT_MASTER_MOTOR_ID = 8;
+        public static final int RIGHT_SLAVE_MOTOR_ID = 9;
     }
 
     // arm

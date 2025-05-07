@@ -78,9 +78,9 @@ public class FeederIOReal implements FeederIO{
 
     public void setFeederMotorNutralMode(boolean isBrake) {
         if (isBrake) {
-            feederMotor.setNeutralMode(NeutralModeValue.Brake);
+            feederMotorConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
         } else {
-            feederMotor.setNeutralMode(NeutralModeValue.Coast);
+            feederMotorConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
         }
         feederMotor.getConfigurator().apply(feederMotorConfig);
     }
