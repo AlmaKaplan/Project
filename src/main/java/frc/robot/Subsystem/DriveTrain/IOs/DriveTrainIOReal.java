@@ -1,7 +1,6 @@
 
 package frc.robot.Subsystem.DriveTrain.IOs;
 
-import java.io.ObjectInputFilter.Status;
 
 import com.ctre.phoenix6.StatusSignal;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
