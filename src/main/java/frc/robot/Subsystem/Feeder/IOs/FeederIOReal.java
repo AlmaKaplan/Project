@@ -6,6 +6,7 @@ import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
+import com.ma5951.utils.Utils.ConvUtil;
 
 import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.units.measure.Current;
@@ -25,7 +26,7 @@ public class FeederIOReal implements IntakeIO{
 
     private StatusSignal<Current> feederCurrent;
     private StatusSignal<AngularVelocity> feederVelocity;
-    private StatusSignal<Voltage> leftApliedVolts;
+    private StatusSignal<Voltage> feederApliedVolts;
 
     public FeederIOReal() {
         feederMotor = new TalonFX(PortMap.Feeder.FEEDER_MOTOR_ID);
@@ -37,7 +38,7 @@ public class FeederIOReal implements IntakeIO{
 
         feederCurrent = feederMotor.getSupplyCurrent();
         feederVelocity = feederMotor.getVelocity();
-        leftApliedVolts = feederMotor.getMotorVoltage();  
+        feederApliedVolts = feederMotor.getMotorVoltage();  
     }
 
     private void motorConfig() {
@@ -66,11 +67,11 @@ public class FeederIOReal implements IntakeIO{
     }
 
     public double getFeederVelocity() {
-        return feederVelocity.getValueAsDouble();
+        return ConvUtil.RPStoRPM(feederVelocity.getValueAsDouble());
     }
 
     public double getFeederApliedVolts() {
-        return leftApliedVolts.getValueAsDouble();
+        return feederApliedVolts.getValueAsDouble();
     }
 
     public void setFeederVoltage(double volt) {
@@ -86,5 +87,7 @@ public class FeederIOReal implements IntakeIO{
         feederMotor.getConfigurator().apply(feederMotorConfig);
     }
 
-
+    public void updateFeederPeriodic() {
+        StatusSignal.refreshAll(feederApliedVolts, feederCurrent, feederVelocity);
+    }
 }
