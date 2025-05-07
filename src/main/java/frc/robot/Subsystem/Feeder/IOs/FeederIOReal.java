@@ -15,9 +15,8 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.PortMap;
 import frc.robot.PortMap.Feeder;
 import frc.robot.Subsystem.Feeder.FeederConstants;
-import frc.robot.Subsystem.Intake.IOs.IntakeIO;
 
-public class FeederIOReal implements IntakeIO{
+public class FeederIOReal implements FeederIO{
 
     protected TalonFX feederMotor;
     protected TalonFXConfiguration feederMotorConfig;
@@ -58,7 +57,7 @@ public class FeederIOReal implements IntakeIO{
         feederMotor.getConfigurator().apply(feederMotorConfig);
     }
 
-    public boolean getFeederSensor() {
+    public boolean isGamePieceinFeeder() {
         return feederSensor.get();
     }
 
@@ -70,7 +69,7 @@ public class FeederIOReal implements IntakeIO{
         return ConvUtil.RPStoRPM(feederVelocity.getValueAsDouble());
     }
 
-    public double getFeederApliedVolts() {
+    public double getFeederAppliedVolts() {
         return feederApliedVolts.getValueAsDouble();
     }
 
@@ -90,4 +89,5 @@ public class FeederIOReal implements IntakeIO{
     public void updateFeederPeriodic() {
         StatusSignal.refreshAll(feederApliedVolts, feederCurrent, feederVelocity);
     }
+
 }
